@@ -1,7 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+)
 
+var (
+	newFile *os.File
+	err     error
+)
+
+func init() {
+	log.SetPrefix("INFO:")
+	log.SetFlags(log.Ldate | log.Lmicroseconds)
+	logDosyam, _ := os.Create("log.txt")
+
+	log.SetOutput(logDosyam)
+}
 func main() {
 	var userinfo int = 2210205010
 	var Passwordinfo int = 6868
@@ -12,6 +28,7 @@ func main() {
 	fmt.Scan(&tip)
 	if tip == 0 {
 		fmt.Println("Welcome Admin")
+		log.Println("Admin")
 		for counter := 4; counter >= 0; counter-- {
 
 			fmt.Println("Enter Your User Name")
@@ -21,6 +38,7 @@ func main() {
 
 			if user == userinfo && Password == Passwordinfo {
 				fmt.Println("Login successfully")
+				log.Println("Login successfully")
 				fmt.Println("0-Viewing Logs")
 				fmt.Println("1-Log out")
 				break
@@ -31,11 +49,13 @@ func main() {
 				fmt.Println(counter)
 
 			}
+			log.Println("unsuccessful")
 
 		}
 
 	} else {
 		fmt.Println("Welcome Student")
+		log.Println("Student")
 		for counter := 4; counter > 0; counter-- {
 
 			fmt.Println("Enter Your User Name")
@@ -45,6 +65,7 @@ func main() {
 
 			if user == userinfo && Password == Passwordinfo {
 				fmt.Println("Login successfully")
+				log.Println("Login successfully")
 				break
 
 			} else {
@@ -53,6 +74,7 @@ func main() {
 				fmt.Println(counter)
 
 			}
+			log.Println("unsuccessful")
 
 		}
 
