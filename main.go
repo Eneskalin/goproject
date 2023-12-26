@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 )
@@ -18,12 +19,18 @@ func init() {
 
 	log.SetOutput(logDosyam)
 }
+func kontrol(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
 func main() {
 	var userinfo int = 2210205010
 	var Passwordinfo int = 6868
 
 	fmt.Println("Select user type(admin:0,student:1)")
 	var tip int
+	var type2 int
 	var user, Password int
 	fmt.Scan(&tip)
 	if tip == 0 {
@@ -41,6 +48,13 @@ func main() {
 				log.Println("Login successfully")
 				fmt.Println("0-Viewing Logs")
 				fmt.Println("1-Log out")
+				fmt.Scan(&type2)
+				if type2 == 0 {
+					dosya, err := ioutil.ReadFile("log.txt")
+					kontrol(err)
+					fmt.Println(string(dosya))
+
+				}
 				break
 
 			} else {
