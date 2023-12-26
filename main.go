@@ -28,13 +28,13 @@ func main() {
 	fmt.Scan(&tip)
 	if tip == 0 {
 		fmt.Println("Welcome Admin")
-		log.Println("Admin")
 		for counter := 4; counter >= 0; counter-- {
 
 			fmt.Println("Enter Your User Name")
 			fmt.Scan(&user)
 			fmt.Println("Enter Your Password")
 			fmt.Scan(&Password)
+			log.Println("Admin")
 
 			if user == userinfo && Password == Passwordinfo {
 				fmt.Println("Login successfully")
